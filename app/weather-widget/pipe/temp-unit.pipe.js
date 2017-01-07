@@ -9,18 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var AppComponent = (function () {
-    function AppComponent() {
+var TempUnitPipe = (function () {
+    function TempUnitPipe() {
     }
-    return AppComponent;
+    TempUnitPipe.prototype.transform = function (temp, unitType) {
+        if (unitType == "celsius") {
+            var celsius = (temp - 32) * 0.5556;
+            return celsius;
+        }
+        else {
+            return temp;
+        }
+    };
+    return TempUnitPipe;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        template: " <div class=\"container\">\n            <div class=\"col-xs-4\">\n                <weather-widget></weather-widget>\n            </div>\n        </div>\n    ",
-        styles: ["\n        .container {\n            padding-top: 50px;\n        }\n    "]
+TempUnitPipe = __decorate([
+    core_1.Pipe({
+        name: 'tempUnit'
     }),
     __metadata("design:paramtypes", [])
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+], TempUnitPipe);
+exports.TempUnitPipe = TempUnitPipe;
+//# sourceMappingURL=temp-unit.pipe.js.map
